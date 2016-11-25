@@ -1,0 +1,58 @@
+<html ng-app="weatherApp">
+<head>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script type="text/javascript" src="controllers.js"></script>
+	<title></title>
+</head>
+<body>
+
+  <div layout="column" layout-fill ng-controller="drawercontroller">
+    <md-toolbar md-scroll-shrink md-shrink-speed-factor="0.5" layout="row">
+    <md-button class="md-mini" aria-label="opendrawer" hide-gt-sm ng-click="opendrawer()">
+      <img src="http://www.wanari.com/public/images/menu.png" height="50" width="50">
+    </md-button>
+      <h2>
+        <span layout-padding>The Weather App</span>
+      </h2>
+      <span flex></span>
+    </md-toolbar>
+    <!--Note: for scrollShrink to work, the toolbar must be a sibling of a md-content element, placed before it.-->
+    <div layout="row" ng-controller = "citycontroller">
+        <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2">
+          <div style="height:100%;">
+            <md-toolbar>
+            <img src="http://www.lirent.net/wp-content/uploads/2014/10/Android-Lollipop-wallpapers-Blue-Android-L-800x450.jpg" style="width:100%;height:25%; position:relative;">
+            </md-toolbar>
+            <md-content flex>
+          <md-input-container style="padding-bottom:1px; width:97%;">
+            <label>Enter City</label>
+            <input type = "text" ng-model="city" ng-change="getcity()">
+          </md-input-container>
+            <md-divider></md-divider>
+          <md-list>
+            <md-list-item class="md-2-line" ng-repeat="c in cities | filter: city" ng-click="getlatlng(c); opendrawer()">
+              {{c}}
+            <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+          </md-content>
+        </div>
+        </md-sidenav>
+      <md-content layout-padding flex>
+       <div ng-view></div>
+      </md-content>
+    </div>
+  </div>
+
+ 
+</body>
+</html>

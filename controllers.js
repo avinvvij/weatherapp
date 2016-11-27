@@ -23,7 +23,7 @@ controllers.citycontroller = function($scope, $rootScope , $http){
 
 	$scope.getcity = function(){
 		$rootScope.circularprogress = true;
-		$http.get("http://gd.geobytes.com/AutoCompleteCity?q="+$scope.city+"&filter=IN").then(function(response){
+		$http.get("http://gd.geobytes.com/AutoCompleteCity?q="+$scope.city+"").then(function(response){
 			$rootScope.circularprogress = false;
 			$scope.cities = response.data;
 		});
@@ -44,10 +44,12 @@ controllers.citycontroller = function($scope, $rootScope , $http){
 		$http.get("https://api.darksky.net/forecast/5f0242b07ca21439da6d1335a945ac0d/"+latitude+","+longitude).
 		then(function(response){
 			$rootScope.progresshidden = false;
-			$scope.temprature = response.data.currently.temperature;
+			$scope.temprature = response.data.currently.temperature+" °F";
 			$scope.timezone = response.data.timezone;
 			$scope.humidity = response.data.currently.humidity;
 			$scope.windspeed = response.data.currently.windSpeed;
+			$scope.dewpoint = response.data.currently.dewPoint;
+			$scope.pressure = response.data.currently.pressure;
 			var icon = response.data.currently.icon;
 			if(icon == "clear-day")
 				$scope.icoimg = "http://www.zastavki.com/pictures/originals/2014/Nature___Seasons___Spring_Clear_day_in_spring_field_067763_.jpg";

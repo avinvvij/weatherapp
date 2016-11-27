@@ -44,7 +44,10 @@ controllers.citycontroller = function($scope, $rootScope , $http){
 		$http.get("https://api.darksky.net/forecast/5f0242b07ca21439da6d1335a945ac0d/"+latitude+","+longitude).
 		then(function(response){
 			$rootScope.progresshidden = false;
-			$scope.temprature = response.data.currently.temperature+" °F";
+			var temp = response.data.currently.temperature -32;
+			temp = temp * (5.0 / 9.0);
+			temp = temp.toPrecision(6);
+			$scope.temprature = temp+" \u00B0 C";
 			$scope.timezone = response.data.timezone;
 			$scope.humidity = response.data.currently.humidity;
 			$scope.windspeed = response.data.currently.windSpeed;

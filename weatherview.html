@@ -1,6 +1,10 @@
-	<div class = "md-whiteframe-z2" style="width:100%; height:80%; background:url('{{icoimg}}');background-repeat: no-repeat; background-size: 1100px 700px">
+ <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  
+  <div class = "md-whiteframe-z2" style="width:100%; height:80%; background:url('{{icoimg}}');background-repeat: no-repeat; background-size: 1100px 700px" ng-init="init()">
     <div>
-			<h2 align="center"><font color="{{fontcolor}}">{{scopecity}}</font></h2>
+      <h2 align="center"><font color="{{fontcolor}}">{{scopecity}}</font></h2>
       <md-progress-linear md-mode="indeterminate" ng-show="progresshidden"></md-progress-linear>
       <md-divider></md-divider>
            <div class="table-responsive">          
@@ -27,6 +31,14 @@
     </tbody>
   </table>
   </div>
+  <br>
+  <br>
+  <div style="margin: auto;height:100px;width:500px;">
+  <canvas id="bar" class="chart chart-bar"
+  chart-data="values" chart-labels="labels" chart-colors="colors">
+</canvas> 
+</div>
+  
 </div>
     </div>
   </div>

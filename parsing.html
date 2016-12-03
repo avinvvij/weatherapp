@@ -1,11 +1,15 @@
 <html ng-app="weatherApp">
 <head>
+  <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
   
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
@@ -14,9 +18,12 @@
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
   <script type="text/javascript" src="controllers.js"></script>
-	<title></title>
+  
+  
+  
+  <title></title>
 </head>
-<body>
+<body ng-cloak>
 
   <div layout="column" layout-fill ng-controller="drawercontroller">
     <md-toolbar md-scroll-shrink md-shrink-speed-factor="0.5" layout="row">
@@ -27,6 +34,11 @@
         <span layout-padding>The Weather App</span>
       </h2>
       <span flex></span>
+      <md-button href="#/map">
+        
+        <img src="http://icons.iconarchive.com/icons/alecive/flatwoken/512/Apps-Google-Maps-icon.png" width="50" height = "50">
+
+      </md-button>
     </md-toolbar>
     <!--Note: for scrollShrink to work, the toolbar must be a sibling of a md-content element, placed before it.-->
     <div layout="row" ng-controller = "citycontroller">
